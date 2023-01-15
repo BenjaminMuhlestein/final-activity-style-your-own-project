@@ -1,0 +1,103 @@
+$background-color: aqua;
+
+body {
+    background-color: $background-color;
+}
+
+.background {
+    padding: 50px 175px;
+    height: 500px;
+    width: 1000px;
+}
+
+#dog {
+    position: absolute;
+    left: 175px;
+    top: 400px;
+    padding: 5px;
+    width: 100px;
+    height: 100px;
+}
+
+marquee {
+    position: absolute;
+    left: 175px;
+    top: 400px;
+    width: 70%;
+}
+
+
+$primary-color: blue;
+$secondary-color: green;
+$tertiary-color: red;
+$font-size: 16px;
+$line-height: 1.5;
+$padding: 10px;
+$margin: 20px;
+$border-radius: 5px;
+$box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+.container {
+  &__item {
+    color: $primary-color;
+    &--highlight {
+      color: $secondary-color;
+    }
+  }
+  &__box {
+    background-color: $tertiary-color;
+    &--large {
+      width: 100%;
+    }
+  }
+}
+
+//I have done my best spent well over 10 hour and cant conenct the code properly.
+
+@mixin font-size($size) {
+  font-size: $size;
+}
+
+@mixin padding($pad) {
+  padding: $pad;
+}
+
+@mixin margin($mar) {
+  margin: $mar;
+}
+
+@mixin box-shadow($shadow) {
+  box-shadow: $shadow;
+}
+
+@function calculate-width($container-width) {
+  @return $container-width / 2;
+}
+
+@if $primary-color == blue {
+  .container {
+    background-color: $primary-color;
+  }
+} @else {
+  .container {
+    background-color: $secondary-color;
+  }
+}
+
+@for $i from 1 through 3 {
+  .container__item--#{$i} {
+    width: calculate-width(100%);
+  }
+}
+
+@while $primary-color == blue {
+  .container__item {
+    color: $primary-color;
+  }
+  $primary-color: green;
+}
+
+// Partial files
+@import "base/variables";
+@import "base/mixins";
+@import "base/functions";
